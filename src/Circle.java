@@ -1,8 +1,8 @@
 import TurtleGraphics.Pen;
 
-public class Circle implements Shape{
+public class Circle extends AbstractShape{
 
-    private double xPos, yPos, radius;
+    public double radius;
     
     public Circle(){
         super();
@@ -33,18 +33,8 @@ public class Circle implements Shape{
         }
     }
 
-    public double getXPos() {
-        return xPos;
-    }
-
-    public double getYPos() {
-        return yPos;
-    }
-
-    public void move(double xLoc, double yLoc) {
-      xPos=xLoc;
-       yPos=yLoc;
-    }
+  
+   
 
     public void stretchBy(double factor) {
         radius *= factor;
@@ -56,6 +46,11 @@ public class Circle implements Shape{
         result += "RADIUS: " + radius + "\n";
         result += "AREA: " + area();
         return result;
+    }
+
+    @Override
+    public double perimeter() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

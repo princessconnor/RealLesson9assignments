@@ -1,7 +1,7 @@
 
 import TurtleGraphics.Pen;
 
-public class Rect implements Shape{
+public class Rect extends AbstractShape{
     
       private double xPos, yPos, width, height;
     
@@ -36,18 +36,7 @@ public class Rect implements Shape{
         p.move(height);
       }
 
-    public double getXPos() {
-       return xPos;
-    }
-
-    public double getYPos() {
-        return xPos;
-    }
-
-    public void move(double xLoc, double yLoc) {
-       xPos=xLoc;
-       yPos=yLoc;
-    }
+  
 
     public void stretchBy(double factor) {
         height*=factor;
@@ -60,5 +49,10 @@ public class Rect implements Shape{
         str += "WIDTH: " + width + "\tHEIGHT: " + height + "\n";
         str += "AREA: " + area();
         return str;
+    }
+
+    @Override
+    public double perimeter() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

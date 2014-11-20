@@ -1,9 +1,10 @@
 
 import TurtleGraphics.Pen;
+import TurtleGraphics.StandardPen;
 
 abstract public class AbstractShape {
     protected double xPos, yPos;
-    
+    Pen p = new StandardPen();
     public AbstractShape()
     {
         xPos =0;

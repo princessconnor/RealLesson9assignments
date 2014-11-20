@@ -33,7 +33,7 @@ public class Wheel extends Circle{
     public String toString()
     {
         String str = "Wheel\n" + "radius: " + radius + "\n" + "Spokes: " + spokes + "\n" + "(x,y) Position: (" + xPos + ","+yPos + ")\n" + "Area: " + area();
-        return str();
+        return str;
     }
  
 }
