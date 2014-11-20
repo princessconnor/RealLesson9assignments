@@ -184,7 +184,7 @@ AbstractShape s;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-  private void erase();
+  private void erase()
     {
         p.setColor(Color.white);
         s.draw(p);
