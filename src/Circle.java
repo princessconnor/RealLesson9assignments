@@ -5,14 +5,12 @@ public class Circle implements Shape{
     private double xPos, yPos, radius;
     
     public Circle(){
-        xPos=0;
-        yPos=0;
+        super();
         radius=1;
     }
     
     public Circle(double x, double y, double r){
-        xPos=x;
-        yPos=y;
+       super(x,y);
         radius=r;
     }
     
@@ -53,11 +51,11 @@ public class Circle implements Shape{
     }
     
     public String toString(){
-        String str="This is a CIRCLE\n";
-        str += "XLOC: " + xPos + "\tYLOC: " + yPos + "\n";
-        str += "RADIUS: " + radius + "\n";
-        str += "AREA: " + area();
-        return str;
+        String result="This is a CIRCLE\n";
+        result += "XLOC: " + xPos + "\tYLOC: " + yPos + "\n";
+        result += "RADIUS: " + radius + "\n";
+        result += "AREA: " + area();
+        return result;
     }
     
 }

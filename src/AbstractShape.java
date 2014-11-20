@@ -15,6 +15,7 @@ abstract public class AbstractShape {
      xPos = x;
      yPos = y;
     }
+      abstract public double perimeter();
     abstract public double area();
     abstract public void draw(Pen p);
     abstract public void stretchBy (double fact);

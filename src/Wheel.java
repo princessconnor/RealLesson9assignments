@@ -35,10 +35,5 @@ public class Wheel extends Circle{
         String str = "Wheel\n" + "radius: " + radius + "\n" + "Spokes: " + spokes + "\n" + "(x,y) Position: (" + xPos + ","+yPos + ")\n" + "Area: " + area();
         return str();
     }
-    Pen p = new StandardPen();
-    Shape s1   = new Circle (20,20,20);
-    Shape s2 = new Wheel (-20,-20, 20, 6);
-    //draw the circle and wheel
-    s1.draw(p);
-    s2.draw(p);
+ 
 }

@@ -6,15 +6,13 @@ public class Rect implements Shape{
       private double xPos, yPos, width, height;
     
     public Rect(){
-        xPos=0;
-        yPos=0;
+      super();
         width=1;
         height=1;
     }
     
     public Rect(double x, double y, double w, double h){
-        xPos=x;
-        yPos=y;
+        super(x,y);
         width=w;
         height=h;
     }
