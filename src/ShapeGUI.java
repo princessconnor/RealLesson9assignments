@@ -2,6 +2,7 @@
 import TurtleGraphics.SketchPadWindow;
 import TurtleGraphics.StandardPen;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -52,13 +53,19 @@ AbstractShape s;
         btnresize = new javax.swing.JButton();
         btnquit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtinfo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btncircle.setText("Circle");
+        btncircle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncircleActionPerformed(evt);
+            }
+        });
 
         btnwheel.setText("Wheel");
 
@@ -102,10 +109,25 @@ AbstractShape s;
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnmove.setText("Move");
+        btnmove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmoveActionPerformed(evt);
+            }
+        });
 
         btnresize.setText("Resize");
+        btnresize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnresizeActionPerformed(evt);
+            }
+        });
 
         btnquit.setText("Quit");
+        btnquit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,11 +156,9 @@ AbstractShape s;
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Shape Data");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        txtinfo.setColumns(20);
+        txtinfo.setRows(5);
+        jScrollPane1.setViewportView(txtinfo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,8 +179,9 @@ AbstractShape s;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(jTextField1))
+                                .addGap(33, 33, 33)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(21, 21, 21))))
         );
@@ -177,7 +198,7 @@ AbstractShape s;
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
+                    .addComponent(jScrollPane1)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -191,9 +212,38 @@ AbstractShape s;
         p.setColor(Color.blue);
         
     }
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btncircleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncircleActionPerformed
+        erase();
+        s= new Circle(0,0,50);
+        s.draw(p);
+        txtinfo.setText(s.toString());
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_btncircleActionPerformed
+
+    private void btnmoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoveActionPerformed
+       double x = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x", "0"));
+       double y = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x", "0"));
+       erase();
+       s.move(x, y);
+       s.draw(p);
+       txtinfo.setText(s.toString());
+       
+       
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnmoveActionPerformed
+
+    private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnquitActionPerformed
+
+    private void btnresizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresizeActionPerformed
+           
+           
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnresizeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +293,7 @@ AbstractShape s;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtinfo;
     // End of variables declaration//GEN-END:variables
 }
