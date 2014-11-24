@@ -70,6 +70,11 @@ AbstractShape s;
         btnwheel.setText("Wheel");
 
         btnrect.setText("Rectangle");
+        btnrect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrectActionPerformed(evt);
+            }
+        });
 
         btntriangle.setText("Triangle");
 
@@ -222,7 +227,7 @@ AbstractShape s;
 
     private void btnmoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoveActionPerformed
        double x = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x", "0"));
-       double y = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x", "0"));
+       double y = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new y", "0"));
        erase();
        s.move(x, y);
        s.draw(p);
@@ -234,7 +239,7 @@ AbstractShape s;
     }//GEN-LAST:event_btnmoveActionPerformed
 
     private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
-
+   //system.exit(0);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnquitActionPerformed
 
@@ -244,6 +249,16 @@ AbstractShape s;
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnresizeActionPerformed
+
+    private void btnrectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrectActionPerformed
+      erase();
+        s = new Rect(0,0,50,20);
+        s.draw(p);
+        txtinfo.setText(s.toString());
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnrectActionPerformed
 
     /**
      * @param args the command line arguments
