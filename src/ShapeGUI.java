@@ -77,6 +77,11 @@ AbstractShape s;
         });
 
         btntriangle.setText("Triangle");
+        btntriangle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntriangleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,13 +244,17 @@ AbstractShape s;
     }//GEN-LAST:event_btnmoveActionPerformed
 
     private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
-   //system.exit(0);
+   //system.close();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnquitActionPerformed
 
     private void btnresizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresizeActionPerformed
            
-           
+             double size=Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new Size","0"));
+        erase();
+        s.stretchBy(size);
+        s.draw(p);
+        txtinfo.setText(s.toString());
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnresizeActionPerformed
@@ -259,6 +268,13 @@ AbstractShape s;
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnrectActionPerformed
+
+    private void btntriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntriangleActionPerformed
+         erase();
+        s=new Triangle();
+        s.draw(p);
+        txtinfo.setText(s.toString());
+    }//GEN-LAST:event_btntriangleActionPerformed
 
     /**
      * @param args the command line arguments
