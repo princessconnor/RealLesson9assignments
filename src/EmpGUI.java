@@ -17,13 +17,13 @@ public class EmpGUI extends javax.swing.JFrame {
     /**
      * Creates new form EmpGUI
      */ Employee emp[];
-    int size = 0;
+    int size=0;
     NumberFormat nf;
     
     public EmpGUI() {
         initComponents();
-        emp = new Employee[10];
-        nf = NumberFormat.getCurrencyInstance();
+        emp=new Employee[10];
+        nf= NumberFormat.getCurrencyInstance();
     }
 
     /**
@@ -249,12 +249,14 @@ public class EmpGUI extends javax.swing.JFrame {
         String nm, type;
         int hours;
         double rate;
-        try{
+        try
+        {
             nm = txtname.getText();
             hours = Integer.parseInt(txthours.getText());
             rate = Double.parseDouble(txtrate.getText());
             type = buttonGroup1.getSelection().getActionCommand();
-        }catch(Exception e)
+        }
+        catch(Exception e)
         {
             JOptionPane.showMessageDialog(this, "Must fill out form correctly");
             return;
