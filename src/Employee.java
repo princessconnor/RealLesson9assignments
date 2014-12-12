@@ -7,7 +7,7 @@
  *
  * @author Dell
  */
-abstract class Employee {
+public abstract class Employee {
 protected String name;
 
 protected double rate;
