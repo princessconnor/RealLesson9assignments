@@ -1,3 +1,6 @@
+
+import java.text.NumberFormat;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,9 +15,14 @@ public class EmpGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form EmpGUI
-     */
+     */ Employee emp[];
+    int size = 0;
+    NumberFormat nf;
+    
     public EmpGUI() {
         initComponents();
+        emp = new Employee[10];
+        nf = NumberFormat.getCurrencyInstance();
     }
 
     /**
@@ -54,6 +62,12 @@ public class EmpGUI extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Hours");
+
+        txtname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnameActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -172,8 +186,9 @@ public class EmpGUI extends javax.swing.JFrame {
                         .addGap(159, 159, 159)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
                                 .addComponent(btnadd)
-                                .addGap(54, 54, 54)
+                                .addGap(51, 51, 51)
                                 .addComponent(btnquit))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
@@ -224,12 +239,53 @@ public class EmpGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+        Employee temp;
+        String nm, type;
+        int hours;
+        double rate;
+        try{
+            nm = txtname.getText();
+            hours = Integer.parseInt(txthours.getText());
+            rate = Double.parseDouble(txtrate.getText());
+            type = buttonGroup1.getSelection().getActionCommand();
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Must fill out form correctly");
+            return;
+        }
+        if(type.equals("FT"))
+            temp = new FullTimeEmployee();
+        else
+            temp = new PartTimeEmployee();
+        
+      if(temp.setName(nm) && temp.setHours(hours) && temp.setRate(rate))
+        {
+            emp[size] = temp;
+            tblemp.setValueAt(temp.getName(), size, 0);
+            tblemp.setValueAt(nf.format(temp.getPay()), size, 1);
+            size++;
+            lbltotalPay.setText(nf.format(Employee.getTotalPay()));
+            clearform();
+            if(size == 10){
+                btnadd.setEnabled(false);
+            }
+            return;
+        }
+        else
+        {
+            String error = "ERROR\n=====\n";
+            if(temp.setName(nm)==false) error += "Name: " + Employee.getNameRules() + "\n";
+            if(temp.setHours(hours)==false) error += "Hours: " + Employee.getHoursRules() + "\n";
+            if(temp.setRate(rate)==false) error += "Rate: " + Employee.getRateRules();
+            JOptionPane.showMessageDialog(this, error);
+        }
 
-    String choice = buttonGroup1.getSelection().getActionCommand();
-    tblemployee.setValueAt(choice, 0, 1);
-    tblemployee.setValueAt("You choose" , 0,0);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnaddActionPerformed
+
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnameActionPerformed
 
     /**
      * @param args the command line arguments
