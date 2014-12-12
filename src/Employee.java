@@ -8,10 +8,10 @@
  * @author Dell
  */
 abstract class Employee {
-String name;
+public String name;
 
-double rate;
- int hours;
+public double rate;
+public int hours;
 
         public static double LOW_RATE= 6.75;
         public static double HIGH_RATE=30.50;
