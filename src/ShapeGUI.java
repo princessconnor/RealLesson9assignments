@@ -255,7 +255,7 @@ AbstractShape s;
 
     private void btnresizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresizeActionPerformed
            
-             double size=Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new Size","0"));
+         double size=Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new Size","0"));
         erase();
         s.stretchBy(size);
         s.draw(p);
@@ -277,7 +277,7 @@ AbstractShape s;
     private void btntriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntriangleActionPerformed
          erase();
         s=new Triangle();
-        
+        //draw
         s.draw(p);
         txtinfo.setText(s.toString());
     }//GEN-LAST:event_btntriangleActionPerformed
