@@ -5,7 +5,7 @@
  */
 /**
  *
- * @author Dell
+ * @author conn6070
  */
 public abstract class Employee {
 protected String name;

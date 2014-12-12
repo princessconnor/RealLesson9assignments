@@ -5,21 +5,26 @@
  */
 /**
  *
- * @author Dell
+ * @author conn6070
  */
-public class FullTimeEmployee {
+public class FullTimeEmployee extends Employee {
 
      public FullTimeEmployee(){
         super();
     }
    
-    public double getPay(){
+    public double getPay()
+    {
         double emppay;
         if(hours>40)
+        {
             emppay = ((hours - 40)*rate) + hours * rate;
-        else
+        }
+            else
+        {
             emppay = hours * rate;
-        totalPay += emppay;
+            totalPay += emppay;
+        }
         return emppay;
     }    
     

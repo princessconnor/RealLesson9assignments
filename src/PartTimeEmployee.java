@@ -5,12 +5,21 @@
  */
 /**
  *
- * @author Dell
+ * @author conn6070
  */
-public class PartTimeEmployee {
-
-    PartTimeEmployee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public class PartTimeEmployee extends Employee 
+{
+ public PartTimeEmployee()
+    {
+        super();
     }
     
+    public double getPay()
+    {
+        double emppay = hours * rate;
+        totalPay += emppay;
+        return emppay;
+    }
+
 }
+    
