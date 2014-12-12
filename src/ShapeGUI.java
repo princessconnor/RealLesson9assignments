@@ -25,7 +25,7 @@ AbstractShape s;
     public ShapeGUI() {
         initComponents();
         SketchPadWindow w = new SketchPadWindow(400,400);
-        w.setLocation(50,275);
+        w.setLocation(50,280);
         p = new StandardPen(w);
         s=new Circle(0,0,0);
     }
@@ -68,6 +68,11 @@ AbstractShape s;
         });
 
         btnwheel.setText("Wheel");
+        btnwheel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnwheelActionPerformed(evt);
+            }
+        });
 
         btnrect.setText("Rectangle");
         btnrect.addActionListener(new java.awt.event.ActionListener() {
@@ -231,8 +236,8 @@ AbstractShape s;
     }//GEN-LAST:event_btncircleActionPerformed
 
     private void btnmoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoveActionPerformed
-       double x = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x", "0"));
-       double y = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new y", "0"));
+       double x = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x cord-> ", "0"));
+       double y = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new y cord-> ", "0"));
        erase();
        s.move(x, y);
        s.draw(p);
@@ -244,7 +249,7 @@ AbstractShape s;
     }//GEN-LAST:event_btnmoveActionPerformed
 
     private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
-   //system.close();
+   this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnquitActionPerformed
 
@@ -272,9 +277,21 @@ AbstractShape s;
     private void btntriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntriangleActionPerformed
          erase();
         s=new Triangle();
+        
         s.draw(p);
         txtinfo.setText(s.toString());
     }//GEN-LAST:event_btntriangleActionPerformed
+
+    private void btnwheelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnwheelActionPerformed
+           erase();
+        int spoke;
+        spoke=4;
+        //s.setSpokes(4);
+        s = new Wheel(0,0,50,spoke);
+        
+        s.draw(p);
+        txtinfo.setText(s.toString());
+    }//GEN-LAST:event_btnwheelActionPerformed
 
     /**
      * @param args the command line arguments
