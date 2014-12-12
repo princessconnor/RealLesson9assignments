@@ -8,49 +8,49 @@
  * @author Dell
  */
 abstract class Employee {
-	private String name;
-	
+	String name;
+
 	private double rate;
-	private int hours;	
-	
+	private int hours;
+
         public static double LOW_RATE= 6.75;
         public static double HIGH_RATE=30.50;
         public static double LOW_HOURS=1;
         public static double HIGH_HOURS=60;
 	protected static double totalPay=0;
 
-        
-        public Employee() 
+
+        public Employee()
         {
 	 name = "";
-	 
+
 	 rate = 0;
-	 hours = 0;	
+	 hours = 0;
 	}
 
-	
-	public String getNameRules() {
+
+	static String getNameRules() {
 	 	return "nonblank";
 	}
 
-	public String getTypeRules()
+	static String getTypeRules()
         {
 		return "1 or 2";
 	}
 
 
-	public String getRateRules()
+	static String getRateRules()
         {
 		return "between 6.75 and 30.50, inclusive";
 	}
 
-	
-	public String getHoursRules() 
+
+	static String getHoursRules()
         {
 		return "between 1 and 60, inclusive";
 	}
 
-	public boolean setName(String nm) 
+	public boolean setName(String nm)
         {
 		if (nm.equals(""))
 			return false;
@@ -60,10 +60,10 @@ abstract class Employee {
 		}
 	}
 
-	
-	
 
-	
+
+
+
 	public boolean setRate(double rt)
         {
 		if (rt < 6.75 || rt > 30.50)
@@ -89,12 +89,12 @@ abstract class Employee {
 		return name;
 	}
 
-	public double getTotalPay() 
+	static double getTotalPay()
         {
 		return totalPay;
-	}	
+	}
         abstract double getPay();
                 {
-                    
+
                 }
 }

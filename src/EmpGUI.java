@@ -1,5 +1,6 @@
 
 import java.text.NumberFormat;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -50,7 +51,7 @@ public class EmpGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblemployee = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbltp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +121,11 @@ public class EmpGUI extends javax.swing.JFrame {
         });
 
         btnquit.setText("Quit");
+        btnquit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquitActionPerformed(evt);
+            }
+        });
 
         tblemployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,11 +161,11 @@ public class EmpGUI extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Total Pay: ");
 
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("$0.00");
-        jLabel6.setOpaque(true);
+        lbltp.setBackground(new java.awt.Color(0, 0, 0));
+        lbltp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbltp.setForeground(new java.awt.Color(255, 255, 255));
+        lbltp.setText("$0.00");
+        lbltp.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,7 +200,7 @@ public class EmpGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbltp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(141, 141, 141)
@@ -226,7 +232,7 @@ public class EmpGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbltp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -261,14 +267,12 @@ public class EmpGUI extends javax.swing.JFrame {
       if(temp.setName(nm) && temp.setHours(hours) && temp.setRate(rate))
         {
             emp[size] = temp;
-            tblemp.setValueAt(temp.getName(), size, 0);
-            tblemp.setValueAt(nf.format(temp.getPay()), size, 1);
+            tblemployee.setValueAt(temp.getName(), size, 0);
+            tblemployee.setValueAt(nf.format(temp.getPay()), size, 1);
             size++;
-            lbltotalPay.setText(nf.format(Employee.getTotalPay()));
+            lbltp.setText(nf.format(Employee.getTotalPay()));
             clearform();
-            if(size == 10){
-                btnadd.setEnabled(false);
-            }
+            
             return;
         }
         else
@@ -279,13 +283,24 @@ public class EmpGUI extends javax.swing.JFrame {
             if(temp.setRate(rate)==false) error += "Rate: " + Employee.getRateRules();
             JOptionPane.showMessageDialog(this, error);
         }
+      
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnaddActionPerformed
-
+ public void clearform()
+    {
+        txtname.setText("");
+        txtrate.setText("");
+        txthours.setText("");
+        buttonGroup1.clearSelection();
+    }
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
+
+    private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnquitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,11 +346,11 @@ public class EmpGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbltp;
     private javax.swing.JTable tblemployee;
     private javax.swing.JTextField txthours;
     private javax.swing.JTextField txtname;
