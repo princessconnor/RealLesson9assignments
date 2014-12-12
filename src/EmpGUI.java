@@ -273,7 +273,7 @@ public class EmpGUI extends javax.swing.JFrame {
             lbltp.setText(nf.format(Employee.getTotalPay()));
             clearform();
             
-            return;
+            return;//leave now
         }
         else
         {
