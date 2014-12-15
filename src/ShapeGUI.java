@@ -222,6 +222,7 @@ AbstractShape s;
     }// </editor-fold>//GEN-END:initComponents
   private void erase()
     {
+        //erase
         p.setColor(Color.white);
         s.draw(p);
         p.setColor(Color.blue);
@@ -236,8 +237,10 @@ AbstractShape s;
     }//GEN-LAST:event_btncircleActionPerformed
 
     private void btnmoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoveActionPerformed
-       double x = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x cord-> ", "0"));
+     //ask for cords
+        double x = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new x cord-> ", "0"));
        double y = Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new y cord-> ", "0"));
+      //erase and draw new
        erase();
        s.move(x, y);
        s.draw(p);
@@ -249,14 +252,16 @@ AbstractShape s;
     }//GEN-LAST:event_btnmoveActionPerformed
 
     private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
-   this.dispose();
+   //exit
+        this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnquitActionPerformed
 
     private void btnresizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresizeActionPerformed
-           
+           //ask for new size
          double size=Double.parseDouble(JOptionPane.showInputDialog(this, "Enter new Size","0"));
-        erase();
+     //erase and drawnew
+         erase();
         s.stretchBy(size);
         s.draw(p);
         txtinfo.setText(s.toString());
